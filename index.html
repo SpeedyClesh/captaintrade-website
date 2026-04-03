@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>CaptainTrade | Developer · AI Prompt Engineer · Crypto & FX Trader</title>
+  <meta name="description" content="CaptainTrade — Full-stack developer, AI Prompt Engineer, and professional Crypto & FX Trader based in Abuja, Nigeria. Building scalable products and navigating financial markets with precision." />
+  <meta name="keywords" content="CaptainTrade, web developer Nigeria, AI prompt engineer, crypto trader, forex trader, FX trading, full stack developer Abuja, trading mentorship" />
+  <meta name="author" content="CaptainTrade" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#090C10" />
+  <link rel="canonical" href="https://captaintrade.netlify.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://captaintrade.netlify.app/" />
+  <meta property="og:title" content="CaptainTrade | Developer · AI Engineer · Trader" />
+  <meta property="og:description" content="Full-stack developer, AI Prompt Engineer, and professional Crypto & FX Trader. Where code meets capital." />
+  <meta property="og:image" content="assets/images/pfp.jpg" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="400" />
+  <meta property="og:locale" content="en_NG" />
+  <meta property="og:site_name" content="CaptainTrade" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@0xcaptaintrade" />
+  <meta name="twitter:creator" content="@0xcaptaintrade" />
+  <meta name="twitter:title" content="CaptainTrade | Developer · AI Engineer · Trader" />
+  <meta name="twitter:description" content="Full-stack developer, AI Prompt Engineer, and professional Crypto & FX Trader. Where code meets capital." />
+  <meta name="twitter:image" content="assets/images/pfp.jpg" />
+
+  <!-- Structured Data (JSON-LD) — helps Google understand who you are -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "CaptainTrade",
+    "url": "https://captaintrade.netlify.app/",
+    "image": "assets/images/pfp.jpg",
+    "jobTitle": "Full-Stack Developer & Trader",
+    "description": "Full-stack developer, AI Prompt Engineer, and professional Crypto & FX Trader.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" },
+    "sameAs": [
+      "https://twitter.com/0xcaptaintrade",
+      "https://t.me/Captain_Trade1",
+      "https://github.com/SpeedyClesh"
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- Performance: preconnect to font servers -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Fonts: display=swap prevents invisible text during load -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== TICKER TAPE ========== -->
+  <div class="ticker-wrapper">
+    <div class="ticker-track">
+      <span class="tick up">BTC/USD &nbsp;▲ 2.41%</span>
+      <span class="tick down">ETH/USD &nbsp;▼ 0.87%</span>
+      <span class="tick up">EUR/USD &nbsp;▲ 0.13%</span>
+      <span class="tick up">GBP/USD &nbsp;▲ 0.29%</span>
+      <span class="tick down">SOL/USD &nbsp;▼ 1.02%</span>
+      <span class="tick up">XAU/USD &nbsp;▲ 0.55%</span>
+      <span class="tick down">USD/JPY &nbsp;▼ 0.18%</span>
+      <span class="tick up">BNB/USD &nbsp;▲ 1.77%</span>
+      <span class="tick up">AUD/USD &nbsp;▲ 0.08%</span>
+      <span class="tick down">LINK/USD &nbsp;▼ 0.64%</span>
+      <!-- duplicate for seamless loop -->
+      <span class="tick up">BTC/USD &nbsp;▲ 2.41%</span>
+      <span class="tick down">ETH/USD &nbsp;▼ 0.87%</span>
+      <span class="tick up">EUR/USD &nbsp;▲ 0.13%</span>
+      <span class="tick up">GBP/USD &nbsp;▲ 0.29%</span>
+      <span class="tick down">SOL/USD &nbsp;▼ 1.02%</span>
+      <span class="tick up">XAU/USD &nbsp;▲ 0.55%</span>
+      <span class="tick down">USD/JPY &nbsp;▼ 0.18%</span>
+      <span class="tick up">BNB/USD &nbsp;▲ 1.77%</span>
+      <span class="tick up">AUD/USD &nbsp;▲ 0.08%</span>
+      <span class="tick down">LINK/USD &nbsp;▼ 0.64%</span>
+    </div>
+  </div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#terminal">Terminal</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#skills" class="mob-link">Skills</a></li>
+      <li><a href="#services" class="mob-link">Services</a></li>
+      <li><a href="#projects" class="mob-link">Projects</a></li>
+      <li><a href="#terminal" class="mob-link">Terminal</a></li>
+      <li><a href="#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section id="home" class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content reveal">
+      <p class="hero-eyebrow">— Available for Projects & Collaborations</p>
+      <h1 class="hero-name">CAPTAIN<br /><span class="accent">TRADE</span></h1>
+      <div class="hero-roles">
+        <span class="role-tag">Full-Stack Developer</span>
+        <span class="role-sep">·</span>
+        <span class="role-tag">AI Prompt Engineer</span>
+        <span class="role-sep">·</span>
+        <span class="role-tag accent-tag">Crypto &amp; FX Trader</span>
+      </div>
+      <p class="hero-sub">
+        I build scalable digital products, engineer AI workflows, and navigate the Crypto &amp; FX markets with precision. Where code meets capital.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Work With Me</a>
+      </div>
+    </div>
+    <div class="hero-stat-row reveal-delay">
+      <div class="hero-stat">
+        <span class="stat-num" data-target="3">0</span><span class="stat-plus">+</span>
+        <span class="stat-label">Years Trading</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="stat-num" data-target="20">0</span><span class="stat-plus">+</span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="stat-num" data-target="500">0</span><span class="stat-plus">+</span>
+        <span class="stat-label">Prompts Engineered</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="stat-num" data-target="2">0</span>
+        <span class="stat-label">Markets Mastered</span>
+      </div>
+    </div>
+    <a href="#about" class="scroll-down">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left reveal">
+          <p class="section-label">// about me</p>
+          <h2 class="section-title">Three Disciplines.<br /><span class="accent">One Mission.</span></h2>
+          <p class="about-text">
+            I'm CaptainTrade — a developer who trades, a trader who codes, and an AI engineer who bridges the two. Based in the digital frontier, I operate at the intersection of technology and financial markets.
+          </p>
+          <p class="about-text">
+            My edge is cross-domain thinking. I understand market structure deeply, build tools that solve real problems, and leverage AI to amplify outcomes in both fields. I don't just follow trends — I build the systems that anticipate them.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon">◈</div>
+              <div>
+                <strong>Developer</strong>
+                <span>Clean code, scalable architecture, real products</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon accent">⚡</div>
+              <div>
+                <strong>AI Engineer</strong>
+                <span>Precision prompting, workflow automation, LLM integration</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">▲</div>
+              <div>
+                <strong>Trader</strong>
+                <span>Technical analysis, risk management, Crypto & FX</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-right reveal-right">
+          <div class="about-card">
+            <div class="pfp-frame">
+              <div class="pfp-corner tl"></div>
+              <div class="pfp-corner tr"></div>
+              <div class="pfp-corner bl"></div>
+              <div class="pfp-corner br"></div>
+              <picture>
+                <source srcset="assets/images/pfp.webp" type="image/webp" />
+                <img src="assets/images/pfp.jpg" alt="CaptainTrade — Developer, AI Engineer & Trader" class="pfp-large" loading="eager" decoding="async" width="400" height="400" />
+              </picture>
+              <div class="pfp-overlay-label">
+                <span class="pfp-tag">CAPTAINTRADE</span>
+                <span class="pfp-sub">Moves in silence. Delivers results.</span>
+              </div>
+            </div>
+            <div class="card-data">
+              <div class="data-row">
+                <span class="data-key">STATUS</span>
+                <span class="data-val status-live"><span class="dot"></span>Active &amp; Available</span>
+              </div>
+              <div class="data-row">
+                <span class="data-key">MARKETS</span>
+                <span class="data-val">Crypto · Forex</span>
+              </div>
+              <div class="data-row">
+                <span class="data-key">STACK</span>
+                <span class="data-val">Full-Stack + AI</span>
+              </div>
+              <div class="data-row">
+                <span class="data-key">TIMEZONE</span>
+                <span class="data-val">WAT / UTC+1</span>
+              </div>
+              <div class="data-row">
+                <span class="data-key">FOCUS</span>
+                <span class="data-val">Building · Trading · Scaling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">// skills &amp; tools</p>
+        <h2 class="section-title">My Toolkit</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">{ }</span>
+            <h3>Development</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">HTML5</span>
+            <span class="stag">CSS3</span>
+            <span class="stag">JavaScript</span>
+            <span class="stag">Python</span>
+            <span class="stag">React</span>
+            <span class="stag">Node.js</span>
+            <span class="stag">REST APIs</span>
+            <span class="stag">Git</span>
+            <span class="stag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon accent">⚡</span>
+            <h3>AI &amp; Prompt Engineering</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Claude</span>
+            <span class="stag">ChatGPT</span>
+            <span class="stag">Gemini</span>
+            <span class="stag">Prompt Design</span>
+            <span class="stag">RAG Systems</span>
+            <span class="stag">Workflow Automation</span>
+            <span class="stag">AI Integration</span>
+            <span class="stag">LLM Fine-tuning</span>
+          </div>
+        </div>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">▲</span>
+            <h3>Trading &amp; Markets</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="stag accent-stag">Technical Analysis</span>
+            <span class="stag accent-stag">Price Action</span>
+            <span class="stag accent-stag">Risk Management</span>
+            <span class="stag accent-stag">Crypto Markets</span>
+            <span class="stag accent-stag">Forex (FX)</span>
+            <span class="stag accent-stag">Market Structure</span>
+            <span class="stag accent-stag">Order Flow</span>
+            <span class="stag accent-stag">TradingView</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="section services-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">// what i offer</p>
+        <h2 class="section-title">Services</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <div class="service-icon">{ }</div>
+          <h3>Web Development</h3>
+          <p>Custom websites and web apps built from scratch. Clean code, fast performance, mobile-first design. From landing pages to full-stack platforms.</p>
+          <ul class="service-list">
+            <li>Frontend & Backend Development</li>
+            <li>API Design & Integration</li>
+            <li>Performance Optimization</li>
+          </ul>
+          <a href="#contact" class="service-link">Inquire →</a>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">02</div>
+          <div class="service-icon accent">⚡</div>
+          <h3>AI Prompt Engineering</h3>
+          <p>I design precise, high-performance prompts and AI workflows that deliver consistent, production-quality results for your business or product.</p>
+          <ul class="service-list">
+            <li>Custom Prompt Architecture</li>
+            <li>LLM Workflow Automation</li>
+            <li>AI Product Integration</li>
+          </ul>
+          <a href="#contact" class="service-link">Inquire →</a>
+        </div>
+        <div class="service-card reveal featured-card">
+          <div class="service-num">03</div>
+          <div class="service-icon">▲</div>
+          <h3>Trading Mentorship</h3>
+          <p>Learn Crypto and FX trading with a structured, systematic approach. Technical analysis, risk frameworks, and live market reading.</p>
+          <ul class="service-list">
+            <li>1-on-1 Trading Sessions</li>
+            <li>Market Structure Analysis</li>
+            <li>Risk Management Systems</li>
+          </ul>
+          <a href="#contact" class="service-link accent">Inquire →</a>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">04</div>
+          <div class="service-icon">◈</div>
+          <h3>Trading Tool Development</h3>
+          <p>Custom indicators, bots, and dashboards built for traders. Combining my dev skills and market knowledge to build tools that actually work.</p>
+          <ul class="service-list">
+            <li>TradingView Pine Script</li>
+            <li>Trading Bots & Automation</li>
+            <li>Market Data Dashboards</li>
+          </ul>
+          <a href="#contact" class="service-link">Inquire →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">// selected work</p>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-top">
+            <span class="project-type">Development</span>
+            <span class="project-year">2024</span>
+          </div>
+          <div class="project-img-placeholder">
+            <div class="proj-icon">{ }</div>
+          </div>
+          <h3 class="project-title">Trading Dashboard</h3>
+          <p class="project-desc">A real-time Crypto &amp; FX dashboard with live price feeds, portfolio tracker, and custom alert system. Built with React and Node.js.</p>
+          <div class="project-tags">
+            <span>React</span><span>Node.js</span><span>WebSockets</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Live Demo →</a>
+            <a href="#" class="proj-link-ghost">GitHub</a>
+          </div>
+        </div>
+        <div class="project-card reveal featured-proj">
+          <div class="project-top">
+            <span class="project-type accent-type">AI + Trading</span>
+            <span class="project-year">2024</span>
+          </div>
+          <div class="project-img-placeholder accent-proj-bg">
+            <div class="proj-icon">⚡</div>
+          </div>
+          <h3 class="project-title">AI Market Analyst</h3>
+          <p class="project-desc">An AI-powered tool that analyzes chart screenshots and generates structured trade setups using prompt engineering and Claude API.</p>
+          <div class="project-tags">
+            <span>Claude API</span><span>Python</span><span>Prompt Engineering</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link accent">Live Demo →</a>
+            <a href="#" class="proj-link-ghost">GitHub</a>
+          </div>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-top">
+            <span class="project-type">Development</span>
+            <span class="project-year">2023</span>
+          </div>
+          <div class="project-img-placeholder">
+            <div class="proj-icon">◈</div>
+          </div>
+          <h3 class="project-title">Prompt Library SaaS</h3>
+          <p class="project-desc">A curated prompt library platform where users can store, share, and rate AI prompts across different LLMs and use cases.</p>
+          <div class="project-tags">
+            <span>React</span><span>Supabase</span><span>TailwindCSS</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Live Demo →</a>
+            <a href="#" class="proj-link-ghost">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="projects-cta reveal">
+        <a href="#contact" class="btn-outline">Have a Project in Mind? Let's Talk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TERMINAL / STATS ========== -->
+  <section id="terminal" class="section terminal-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">// live terminal</p>
+        <h2 class="section-title">Current <span class="accent">Status</span></h2>
+      </div>
+      <div class="terminal-box reveal">
+        <div class="terminal-topbar">
+          <span class="tb-dot red"></span>
+          <span class="tb-dot yellow"></span>
+          <span class="tb-dot green"></span>
+          <span class="tb-title">captaintrade ~ status</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">whoami</span></div>
+          <div class="t-line t-out">CaptainTrade — Developer · AI Engineer · Trader</div>
+          <br />
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">status --current</span></div>
+          <div class="t-line t-out"><span class="t-key">markets     </span><span class="t-val green">CRYPTO + FX ACTIVE</span></div>
+          <div class="t-line t-out"><span class="t-key">projects    </span><span class="t-val green">OPEN TO NEW WORK</span></div>
+          <div class="t-line t-out"><span class="t-key">mentorship  </span><span class="t-val accent">TAKING NEW STUDENTS</span></div>
+          <div class="t-line t-out"><span class="t-key">location    </span><span class="t-val">ABUJA, NIGERIA · UTC+1</span></div>
+          <br />
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">skills --list</span></div>
+          <div class="t-line t-out"><span class="t-key">dev_stack   </span><span class="t-val">JavaScript · Python · React · Node.js</span></div>
+          <div class="t-line t-out"><span class="t-key">ai_tools    </span><span class="t-val">Claude · GPT-4 · Gemini · LangChain</span></div>
+          <div class="t-line t-out"><span class="t-key">markets     </span><span class="t-val">BTC · ETH · EUR/USD · GBP/USD · Gold</span></div>
+          <br />
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">contact --fastest</span></div>
+          <div class="t-line t-out"><span class="t-val accent">→ Use the contact form below or DM on X / Telegram</span></div>
+          <div class="t-line t-cursor"><span class="t-prompt">$</span> <span class="cursor-blink">█</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">// get in touch</p>
+        <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+        <p class="section-sub">Whether you need a developer, a trading mentor, or an AI engineer — I'm here.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-left reveal">
+          <div class="contact-links">
+            <a href="https://twitter.com/0xcaptaintrade" target="_blank" class="contact-social">
+              <div class="social-icon">𝕏</div>
+              <div>
+                <strong>Twitter / X</strong>
+                <span>@0xcaptaintrade</span>
+              </div>
+            </a>
+            <a href="https://t.me/Captain_Trade1" target="_blank" class="contact-social">
+              <div class="social-icon">✈</div>
+              <div>
+                <strong>Telegram</strong>
+                <span>@Captain_Trade1</span>
+              </div>
+            </a>
+            <a href="/cdn-cgi/l/email-protection#87e4e6f7f3e6eee9f3f5e6e3e2b7b6c7e0eae6eeeba9e4e8ea" class="contact-social">
+              <div class="social-icon">@</div>
+              <div>
+                <strong>Email</strong>
+                <span><span class="__cf_email__" data-cfemail="aecdcfdedacfc7c0dadccfcacb9e9feec9c3cfc7c280cdc1c3">[email&#160;protected]</span></span>
+              </div>
+            </a>
+            <a href="https://github.com/SpeedyClesh" target="_blank" class="contact-social">
+              <div class="social-icon">&lt;/&gt;</div>
+              <div>
+                <strong>GitHub</strong>
+                <span>github.com/SpeedyClesh</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-right reveal-right">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <!-- Formspree config -->
+            <input type="hidden" name="_subject" value="New message from CaptainTrade.dev" />
+            <input type="hidden" name="_next" value="" />
+            <input type="text" name="_gotcha" style="display:none" />
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">I'm interested in</label>
+              <select id="subject" name="subject">
+                <option value="">— Select a service —</option>
+                <option value="dev">Web Development</option>
+                <option value="ai">AI Prompt Engineering</option>
+                <option value="trading">Trading Mentorship</option>
+                <option value="tools">Trading Tool Development</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me what you're working on..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">Send Message →</button>
+            <div id="form-success" class="form-success hidden">
+              ✓ Message sent! I'll get back to you within 24h.
+            </div>
+            <div id="form-error" class="form-error hidden">
+              ✕ Something went wrong. Please try emailing directly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#home" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+        <p class="footer-copy">© 2026 CaptainTrade. Built with precision.</p>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

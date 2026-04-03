@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://captaintrade.netlify.app/sitemap.xml
