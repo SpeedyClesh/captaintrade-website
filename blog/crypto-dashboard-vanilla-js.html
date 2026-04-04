@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building a Real-Time Crypto Dashboard With Vanilla JS and Zero Dependencies — CaptainTrade</title>
+  <meta name="description" content="No React. No npm. No build tools. Just clean JavaScript talking directly to public APIs — and it's faster than most framework-based solutions I've seen." />
+  <meta name="author" content="CaptainTrade" />
+  <meta property="og:title" content="Building a Real-Time Crypto Dashboard With Vanilla JS and Zero Dependencies" />
+  <meta property="og:description" content="No React. No npm. No build tools. Just clean JavaScript talking directly to public APIs — and it's faster than most framework-based solutions I've seen." />
+  <meta property="og:image" content="../assets/images/pfp.jpg" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@0xcaptaintrade" />
+  <link rel="canonical" href="https://captaintrade.netlify.app/blog/crypto-dashboard-vanilla-js" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/post.css" />
+</head>
+<body class="post-page">
+
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrapper">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="tick" id="t-BTC">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU">XAU/USD &nbsp;— —</span>
+      <span class="tick" id="t-BTC2">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH2">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL2">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB2">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK2">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR2">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP2">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY2">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD2">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU2">XAU/USD &nbsp;— —</span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" style="color:var(--accent)">Insights</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about" class="mob-link">About</a></li>
+      <li><a href="../index.html#services" class="mob-link">Services</a></li>
+      <li><a href="../blog.html" class="mob-link">Insights</a></li>
+      <li><a href="../index.html#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- POST HERO -->
+  <section class="post-hero">
+    <div class="container">
+      <div class="post-hero-inner">
+        <div class="post-hero-meta">
+          <a href="../blog.html" class="post-back">← Back to Insights</a>
+          <span class="post-back-sep">·</span>
+          <span class="post-tag dev-tag">Development</span>
+          <span class="post-date">March 28, 2026</span>
+          <span class="post-read">6 min read</span>
+        </div>
+        <h1 class="post-hero-title">Building a Real-Time Crypto Dashboard With Vanilla JS and Zero Dependencies</h1>
+        <p class="post-hero-excerpt">No React. No npm. No build tools. Just clean JavaScript talking directly to public APIs — and it's faster than most framework-based solutions I've seen.</p>
+        <div class="post-hero-byline">
+          <div class="byline-author">
+            <img src="../assets/images/pfp.jpg" alt="CaptainTrade" class="byline-avatar" />
+            <div>
+              <div class="byline-name">CaptainTrade</div>
+              <span class="byline-role">Developer · AI Engineer · Trader</span>
+            </div>
+          </div>
+          <div class="byline-divider"></div>
+          <div class="byline-stat">
+            <span class="byline-stat-val">March 28, 2026</span>
+            <span class="byline-stat-key">Published</span>
+          </div>
+          <div class="byline-divider"></div>
+          <div class="byline-stat">
+            <span class="byline-stat-val">6 min read</span>
+            <span class="byline-stat-key">Read time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST LAYOUT -->
+  <div class="container">
+    <div class="post-layout">
+
+      <!-- BODY -->
+      <article class="post-body">
+        <h2 id="why-vanilla">Why vanilla JS?</h2>
+        <p>Every time I mention building something without a framework, someone asks why. The answer is simple: for a data dashboard that fetches from APIs and updates the DOM, a framework adds complexity without adding value. You're loading hundreds of kilobytes of library code to do something JavaScript does natively.</p>
+        <p>The dashboard I built fetches live crypto prices, updates in real-time via WebSocket, and renders portfolio calculations — all in under 12KB of JavaScript. No bundler, no node_modules folder, no build step. Open the HTML file and it works.</p>
+
+        <div class="callout">
+          <span class="callout-label">What we're building</span>
+          <p>A crypto dashboard that shows live prices for BTC, ETH, SOL and a custom portfolio — fetching from CoinGecko's free API and updating every 30 seconds, with WebSocket fallback for real-time prices.</p>
+        </div>
+
+        <h2 id="api-setup">Setting up the API calls</h2>
+        <p>CoinGecko's public API requires no key and gives you price, 24h change, and market cap for any coin. The pattern is simple — fetch on load, then set an interval:</p>
+
+        <div class="code-block"><pre><span class="kw">const</span> COINS = [<span class="str">'bitcoin'</span>, <span class="str">'ethereum'</span>, <span class="str">'solana'</span>];
+<span class="kw">const</span> BASE  = <span class="str">'https://api.coingecko.com/api/v3/simple/price'</span>;
+
+<span class="kw">async function</span> <span class="fn">fetchPrices</span>() {
+  <span class="kw">const</span> ids = COINS.join(<span class="str">','</span>);
+  <span class="kw">const</span> url = <span class="str">`\${BASE}?ids=\${ids}&vs_currencies=usd&include_24hr_change=true`</span>;
+  <span class="kw">const</span> res  = <span class="kw">await</span> fetch(url);
+  <span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
+  <span class="fn">renderPrices</span>(data);
+}
+
+<span class="fn">fetchPrices</span>();
+<span class="fn">setInterval</span>(fetchPrices, <span class="str">30000</span>);</pre></div>
+
+        <h2 id="rendering">Rendering live data efficiently</h2>
+        <p>The key insight for DOM performance: never rebuild the entire list on each fetch. Instead, target specific elements by ID and update only the values that changed. This avoids layout thrashing and keeps the UI smooth even with frequent updates.</p>
+
+        <div class="code-block"><pre><span class="kw">function</span> <span class="fn">renderPrices</span>(data) {
+  COINS.<span class="fn">forEach</span>(coin => {
+    <span class="kw">const</span> d      = data[coin];
+    <span class="kw">const</span> price  = d.usd.<span class="fn">toLocaleString</span>(<span class="str">'en-US'</span>, { maximumFractionDigits: 2 });
+    <span class="kw">const</span> change = d.usd_24h_change.<span class="fn">toFixed</span>(2);
+    <span class="kw">const</span> isUp   = d.usd_24h_change >= 0;
+
+    document.<span class="fn">getElementById</span>(<span class="str">`price-\${coin}`</span>).textContent  = <span class="str">`$\${price}`</span>;
+    document.<span class="fn">getElementById</span>(<span class="str">`change-\${coin}`</span>).textContent = <span class="str">`\${isUp ? '▲' : '▼'} \${Math.abs(change)}%`</span>;
+    document.<span class="fn">getElementById</span>(<span class="str">`change-\${coin}`</span>).className  = isUp ? <span class="str">'up'</span> : <span class="str">'down'</span>;
+  });
+}</pre></div>
+
+        <h2 id="websockets">Adding WebSocket for real-time updates</h2>
+        <p>For traders who want prices updating by the second rather than every 30 seconds, Binance's public WebSocket stream requires no authentication and pushes live price data continuously.</p>
+
+        <div class="code-block"><pre><span class="kw">const</span> ws = <span class="kw">new</span> <span class="fn">WebSocket</span>(
+  <span class="str">'wss://stream.binance.com:9443/stream?streams=btcusdt@ticker/ethusdt@ticker'</span>
+);
+
+ws.<span class="fn">onmessage</span> = (event) => {
+  <span class="kw">const</span> { data } = <span class="fn">JSON</span>.<span class="fn">parse</span>(event.data);
+  <span class="cm">// data.c = current price, data.P = 24h change %</span>
+  <span class="fn">updatePrice</span>(data.s, <span class="fn">parseFloat</span>(data.c), <span class="fn">parseFloat</span>(data.P));
+};
+
+ws.<span class="fn">onerror</span> = () => {
+  <span class="cm">// Fallback to REST polling if WebSocket fails</span>
+  <span class="fn">setInterval</span>(fetchPrices, <span class="str">5000</span>);
+};</pre></div>
+
+        <h2 id="performance">Performance tips</h2>
+        <ul>
+          <li><strong>Debounce DOM updates</strong> — if WebSocket is pushing updates every 100ms, batch them and render at 60fps using requestAnimationFrame</li>
+          <li><strong>Cache element references</strong> — store getElementById results in variables rather than querying on every update</li>
+          <li><strong>Use CSS transitions</strong> — flash a subtle highlight on price change rather than replacing the element, which is cheaper and looks better</li>
+          <li><strong>Graceful degradation</strong> — always have a REST polling fallback if WebSocket is unavailable</li>
+        </ul>
+
+        <h2 id="full-code">The full pattern</h2>
+        <p>The complete dashboard — prices, portfolio calculations, 24h change, and WebSocket updates — comes in around 200 lines of vanilla JavaScript. No dependencies. No build tools. Loads in under 100ms on a slow connection.</p>
+        <p>If you want the full source, reach out via Twitter or Telegram and I'll share the repo directly.</p>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">In this article</div>
+          <ul class="toc-list">
+            <li><a href="#why-vanilla">Why vanilla JS?</a></li>
+            <li><a href="#api-setup">Setting up the API calls</a></li>
+            <li><a href="#rendering">Rendering live data efficiently</a></li>
+            <li><a href="#websockets">Adding WebSocket for real-time updates</a></li>
+            <li><a href="#performance">Performance tips</a></li>
+            <li><a href="#full-code">The full pattern</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">About the author</div>
+          <img src="../assets/images/pfp.jpg" alt="CaptainTrade" class="author-card-img" />
+          <div class="author-card-name">CaptainTrade</div>
+          <p class="author-card-bio">Developer, AI Prompt Engineer, and professional Crypto & FX Trader based in Abuja, Nigeria.</p>
+          <div class="author-socials">
+            <a href="https://twitter.com/0xcaptaintrade" target="_blank" class="author-social-link">𝕏 Twitter</a>
+            <a href="https://t.me/Captain_Trade1" target="_blank" class="author-social-link">Telegram</a>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">Related posts</div>
+            <a href="netlify-github-setup.html" class="related-post">
+              <span class="related-tag dev-tag">Development</span>
+              <span class="related-title">My Netlify + GitHub Setup</span>
+            </a>
+            <a href="rag-system-trade-history.html" class="related-post">
+              <span class="related-tag ai-tag">AI & Prompts</span>
+              <span class="related-title">RAG System for Trade History</span>
+            </a>
+            <a href="why-retail-traders-lose.html" class="related-post">
+              <span class="related-tag trading-tag">Trading</span>
+              <span class="related-title">Why Most Retail Traders Lose</span>
+            </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- POST FOOTER -->
+  <section class="post-footer-section">
+    <div class="container">
+      <div class="post-footer-inner">
+        <div class="post-share">
+          <span class="share-label">Share</span>
+          <button class="share-btn" id="shareX">𝕏 Twitter</button>
+          <button class="share-btn" id="shareCopy">Copy Link</button>
+        </div>
+        <div class="post-nav">
+          <a href="../blog.html" class="post-nav-link">← All Posts</a>
+          <a href="../index.html#contact" class="post-nav-link">Work With Me →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="../index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+        <p class="footer-copy">© 2026 CaptainTrade. Built with precision.</p>
+        <div class="footer-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#services">Services</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/post.js" defer></script>
+</body>
+</html>

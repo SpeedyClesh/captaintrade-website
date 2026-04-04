@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Exact Netlify + GitHub Setup for Zero-Config Deployments — CaptainTrade</title>
+  <meta name="description" content="Every push to main deploys in under 30 seconds with security headers, caching rules, and branch previews. Here's the exact netlify.toml config I use on every project." />
+  <meta name="author" content="CaptainTrade" />
+  <meta property="og:title" content="My Exact Netlify + GitHub Setup for Zero-Config Deployments" />
+  <meta property="og:description" content="Every push to main deploys in under 30 seconds with security headers, caching rules, and branch previews. Here's the exact netlify.toml config I use on every project." />
+  <meta property="og:image" content="../assets/images/pfp.jpg" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@0xcaptaintrade" />
+  <link rel="canonical" href="https://captaintrade.netlify.app/blog/netlify-github-setup" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/post.css" />
+</head>
+<body class="post-page">
+
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrapper">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="tick" id="t-BTC">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU">XAU/USD &nbsp;— —</span>
+      <span class="tick" id="t-BTC2">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH2">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL2">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB2">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK2">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR2">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP2">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY2">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD2">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU2">XAU/USD &nbsp;— —</span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" style="color:var(--accent)">Insights</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about" class="mob-link">About</a></li>
+      <li><a href="../index.html#services" class="mob-link">Services</a></li>
+      <li><a href="../blog.html" class="mob-link">Insights</a></li>
+      <li><a href="../index.html#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- POST HERO -->
+  <section class="post-hero">
+    <div class="container">
+      <div class="post-hero-inner">
+        <div class="post-hero-meta">
+          <a href="../blog.html" class="post-back">← Back to Insights</a>
+          <span class="post-back-sep">·</span>
+          <span class="post-tag dev-tag">Development</span>
+          <span class="post-date">February 10, 2026</span>
+          <span class="post-read">3 min read</span>
+        </div>
+        <h1 class="post-hero-title">My Exact Netlify + GitHub Setup for Zero-Config Deployments</h1>
+        <p class="post-hero-excerpt">Every push to main deploys in under 30 seconds with security headers, caching rules, and branch previews. Here's the exact netlify.toml config I use on every project.</p>
+        <div class="post-hero-byline">
+          <div class="byline-author">
+            <img src="../assets/images/pfp.jpg" alt="CaptainTrade" class="byline-avatar" />
+            <div>
+              <div class="byline-name">CaptainTrade</div>
+              <span class="byline-role">Developer · AI Engineer · Trader</span>
+            </div>
+          </div>
+          <div class="byline-divider"></div>
+          <div class="byline-stat">
+            <span class="byline-stat-val">February 10, 2026</span>
+            <span class="byline-stat-key">Published</span>
+          </div>
+          <div class="byline-divider"></div>
+          <div class="byline-stat">
+            <span class="byline-stat-val">3 min read</span>
+            <span class="byline-stat-key">Read time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST LAYOUT -->
+  <div class="container">
+    <div class="post-layout">
+
+      <!-- BODY -->
+      <article class="post-body">
+        <h2 id="why-netlify">Why Netlify over other options</h2>
+        <p>I've deployed projects on GitHub Pages, Vercel, Railway, and Render. For static sites and simple web projects, Netlify wins on the combination of speed, features, and simplicity. The free tier is genuinely useful — not crippled — and the deployment pipeline is the fastest I've used.</p>
+        <p>The key advantage for me is the netlify.toml config file. Everything about the deployment — headers, redirects, caching, build commands — lives in a file in the repo. No clicking around a dashboard, no undocumented settings, no surprises when you clone the project somewhere else.</p>
+
+        <div class="callout">
+          <span class="callout-label">What this setup gives you</span>
+          <p>Automatic deploys on every push to main. Branch previews for every PR. Security headers that score A+ on securityheaders.com. Asset caching that makes repeat visits near-instant. All free.</p>
+        </div>
+
+        <h2 id="repo-structure">Repo structure that works</h2>
+        <p>For a static site, keep it simple. The publish directory should be the root — no build step, no dist folder to manage:</p>
+
+        <div class="code-block"><pre>your-project/
+├── index.html
+├── netlify.toml        <span class="cm"># ← the key file</span>
+├── robots.txt
+├── sitemap.xml
+├── css/
+├── js/
+└── assets/</pre></div>
+
+        <h2 id="netlify-config">The netlify.toml config</h2>
+        <p>This is the exact config I use on every static project. Copy it, adjust the cache durations for your use case, and you're done:</p>
+
+        <div class="code-block"><pre><span class="cm"># Build settings</span>
+[build]
+  publish = <span class="str">"."</span>
+
+<span class="cm"># Security headers — applied to every page</span>
+[[headers]]
+  for = <span class="str">"/*"</span>
+  [headers.values]
+    X-Frame-Options = <span class="str">"DENY"</span>
+    X-Content-Type-Options = <span class="str">"nosniff"</span>
+    X-XSS-Protection = <span class="str">"1; mode=block"</span>
+    Referrer-Policy = <span class="str">"strict-origin-when-cross-origin"</span>
+
+<span class="cm"># Aggressive caching for assets (1 year)</span>
+[[headers]]
+  for = <span class="str">"/assets/*"</span>
+  [headers.values]
+    Cache-Control = <span class="str">"public, max-age=31536000, immutable"</span>
+
+<span class="cm"># CSS and JS — 24 hour cache (update on each deploy)</span>
+[[headers]]
+  for = <span class="str">"/css/*"</span>
+  [headers.values]
+    Cache-Control = <span class="str">"public, max-age=86400"</span>
+
+[[headers]]
+  for = <span class="str">"/js/*"</span>
+  [headers.values]
+    Cache-Control = <span class="str">"public, max-age=86400"</span>
+
+<span class="cm"># Clean URLs and SPA fallback</span>
+[[redirects]]
+  from = <span class="str">"/*"</span>
+  to = <span class="str">"/index.html"</span>
+  status = 200</pre></div>
+
+        <h2 id="branch-previews">Branch previews for free</h2>
+        <p>One of the most underrated Netlify features: every branch you push gets its own preview URL automatically. Create a branch called feature/new-section, push it, and Netlify generates a unique URL like deploy-preview-42--your-site.netlify.app within 30 seconds.</p>
+        <p>This means you can share a preview of any change with a client or colleague before it goes live — no local setup required on their end, just a link. For client work, this is genuinely invaluable.</p>
+
+        <h2 id="custom-domain">Adding a custom domain</h2>
+        <p>When you're ready for a custom domain, the process in Netlify is straightforward. Go to Site configuration → Domain management → Add domain. Netlify will give you nameservers to point your domain registrar at, and it handles SSL certificate provisioning automatically via Let's Encrypt.</p>
+        <p>The entire process from purchase to live custom domain with HTTPS takes about 15 minutes — mostly waiting for DNS propagation. Netlify's interface walks you through each step clearly.</p>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">In this article</div>
+          <ul class="toc-list">
+            <li><a href="#why-netlify">Why Netlify over other options</a></li>
+            <li><a href="#repo-structure">Repo structure that works</a></li>
+            <li><a href="#netlify-config">The netlify.toml config</a></li>
+            <li><a href="#branch-previews">Branch previews for free</a></li>
+            <li><a href="#custom-domain">Adding a custom domain</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">About the author</div>
+          <img src="../assets/images/pfp.jpg" alt="CaptainTrade" class="author-card-img" />
+          <div class="author-card-name">CaptainTrade</div>
+          <p class="author-card-bio">Developer, AI Prompt Engineer, and professional Crypto & FX Trader based in Abuja, Nigeria.</p>
+          <div class="author-socials">
+            <a href="https://twitter.com/0xcaptaintrade" target="_blank" class="author-social-link">𝕏 Twitter</a>
+            <a href="https://t.me/Captain_Trade1" target="_blank" class="author-social-link">Telegram</a>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">Related posts</div>
+            <a href="crypto-dashboard-vanilla-js.html" class="related-post">
+              <span class="related-tag dev-tag">Development</span>
+              <span class="related-title">Real-Time Crypto Dashboard</span>
+            </a>
+            <a href="rag-system-trade-history.html" class="related-post">
+              <span class="related-tag ai-tag">AI & Prompts</span>
+              <span class="related-title">RAG System for Trade History</span>
+            </a>
+            <a href="why-retail-traders-lose.html" class="related-post">
+              <span class="related-tag trading-tag">Trading</span>
+              <span class="related-title">Why Most Retail Traders Lose</span>
+            </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- POST FOOTER -->
+  <section class="post-footer-section">
+    <div class="container">
+      <div class="post-footer-inner">
+        <div class="post-share">
+          <span class="share-label">Share</span>
+          <button class="share-btn" id="shareX">𝕏 Twitter</button>
+          <button class="share-btn" id="shareCopy">Copy Link</button>
+        </div>
+        <div class="post-nav">
+          <a href="../blog.html" class="post-nav-link">← All Posts</a>
+          <a href="../index.html#contact" class="post-nav-link">Work With Me →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="../index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+        <p class="footer-copy">© 2026 CaptainTrade. Built with precision.</p>
+        <div class="footer-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#services">Services</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/post.js" defer></script>
+</body>
+</html>

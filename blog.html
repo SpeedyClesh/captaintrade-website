@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights — CaptainTrade | Trading · Dev · AI</title>
+  <meta name="description" content="Raw insights from the desk of CaptainTrade — market analysis, dev breakdowns, and AI engineering notes." />
+  <meta name="author" content="CaptainTrade" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://captaintrade.netlify.app/blog" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://captaintrade.netlify.app/blog" />
+  <meta property="og:title" content="Insights — CaptainTrade" />
+  <meta property="og:description" content="Trading analysis, dev breakdowns, and AI engineering notes from CaptainTrade." />
+  <meta property="og:image" content="assets/images/pfp.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@0xcaptaintrade" />
+  <meta name="twitter:title" content="Insights — CaptainTrade" />
+  <meta name="twitter:description" content="Trading analysis, dev breakdowns, and AI engineering notes." />
+  <meta name="twitter:image" content="assets/images/pfp.jpg" />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/blog.css" />
+</head>
+<body>
+
+  <!-- ========== TICKER ========== -->
+  <div class="ticker-wrapper">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="tick" id="t-BTC">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU">XAU/USD &nbsp;— —</span>
+      <span class="tick" id="t-BTC2">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH2">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL2">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB2">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK2">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR2">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP2">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY2">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD2">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU2">XAU/USD &nbsp;— —</span>
+    </div>
+  </div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="blog.html" style="color: var(--accent);">Insights</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html#about" class="mob-link">About</a></li>
+      <li><a href="index.html#services" class="mob-link">Services</a></li>
+      <li><a href="index.html#projects" class="mob-link">Projects</a></li>
+      <li><a href="blog.html" class="mob-link">Insights</a></li>
+      <li><a href="index.html#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== BLOG HERO ========== -->
+  <section class="blog-hero">
+    <div class="blog-hero-bg"></div>
+    <div class="container">
+      <div class="blog-hero-inner">
+        <p class="section-label">// insights</p>
+        <h1 class="blog-hero-title">From the <span class="accent">Desk</span></h1>
+        <p class="blog-hero-sub">Raw thoughts on trading markets, software development, and AI engineering. No fluff. No hype. Just what I've seen, tested, and built.</p>
+        <div class="blog-tags-filter">
+          <button class="btag active" data-filter="all">All</button>
+          <button class="btag" data-filter="trading">Trading</button>
+          <button class="btag" data-filter="dev">Development</button>
+          <button class="btag" data-filter="ai">AI & Prompts</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED POST ========== -->
+  <section class="blog-featured">
+    <div class="container">
+      <div class="featured-post-card" data-category="trading">
+        <div class="fp-left">
+          <div class="fp-meta">
+            <span class="post-tag trading-tag">Trading</span>
+            <span class="post-date">April 3, 2026</span>
+            <span class="post-read">8 min read</span>
+          </div>
+          <h2 class="fp-title">Why Most Retail Traders Lose — And the One Framework That Changed My Approach</h2>
+          <p class="fp-excerpt">
+            After blowing two accounts and nearly quitting altogether, I stopped chasing setups and started studying structure. Here's the exact mental model shift that took me from reactive to deliberate — and why 90% of retail traders will never find it.
+          </p>
+          <div class="fp-footer">
+            <div class="fp-author">
+              <div class="author-dot"></div>
+              <span>CaptainTrade</span>
+            </div>
+            <a href="blog/why-retail-traders-lose.html" class="post-read-link accent">Read Article →</a>
+          </div>
+        </div>
+        <div class="fp-right">
+          <div class="fp-visual trading-visual">
+            <div class="chart-lines">
+              <div class="cl cl1"></div>
+              <div class="cl cl2"></div>
+              <div class="cl cl3"></div>
+              <div class="cl cl4"></div>
+              <div class="cl cl5"></div>
+            </div>
+            <div class="chart-candles">
+              <div class="candle red"><div class="wick"></div><div class="body"></div></div>
+              <div class="candle red"><div class="wick"></div><div class="body"></div></div>
+              <div class="candle green"><div class="wick"></div><div class="body"></div></div>
+              <div class="candle green"><div class="wick"></div><div class="body tall"></div></div>
+              <div class="candle green"><div class="wick"></div><div class="body"></div></div>
+              <div class="candle red"><div class="wick"></div><div class="body"></div></div>
+              <div class="candle green"><div class="wick"></div><div class="body tall"></div></div>
+            </div>
+            <div class="fp-visual-label">MARKET STRUCTURE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POST GRID ========== -->
+  <section class="blog-grid-section">
+    <div class="container">
+      <div class="blog-grid" id="blogGrid">
+
+        <!-- POST 1 — Dev -->
+        <article class="post-card" data-category="dev">
+          <div class="post-visual dev-visual">
+            <div class="code-lines">
+              <div class="code-line"><span class="cl-kw">async function</span> <span class="cl-fn">fetchMarket</span><span class="cl-px">()</span> <span class="cl-px">{</span></div>
+              <div class="code-line pl"><span class="cl-kw">const</span> res <span class="cl-px">=</span> <span class="cl-kw">await</span> <span class="cl-fn">fetch</span><span class="cl-px">(</span>url<span class="cl-px">)</span></div>
+              <div class="code-line pl"><span class="cl-kw">return</span> res<span class="cl-px">.</span><span class="cl-fn">json</span><span class="cl-px">()</span></div>
+              <div class="code-line"><span class="cl-px">}</span></div>
+            </div>
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-tag dev-tag">Development</span>
+              <span class="post-date">March 28, 2026</span>
+            </div>
+            <h3 class="post-title">Building a Real-Time Crypto Dashboard With Vanilla JS and Zero Dependencies</h3>
+            <p class="post-excerpt">No React. No npm. No build tools. Just clean JavaScript talking directly to public APIs — and it's faster than most framework-based solutions I've seen.</p>
+            <div class="post-footer">
+              <span class="post-read">6 min read</span>
+              <a href="blog/crypto-dashboard-vanilla-js.html" class="post-read-link">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 2 — AI -->
+        <article class="post-card" data-category="ai">
+          <div class="post-visual ai-visual">
+            <div class="prompt-block">
+              <div class="prompt-line sys">SYSTEM</div>
+              <div class="prompt-line">You are a precise trading analyst.</div>
+              <div class="prompt-line">Respond only in structured JSON.</div>
+              <div class="prompt-line sys mt">USER</div>
+              <div class="prompt-line accent-text">Analyze this BTC/USD setup...</div>
+            </div>
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-tag ai-tag">AI & Prompts</span>
+              <span class="post-date">March 15, 2026</span>
+            </div>
+            <h3 class="post-title">The Prompt Engineering Pattern That Makes Claude 3x More Useful for Traders</h3>
+            <p class="post-excerpt">Most people treat AI like a chatbot. I treat it like a junior analyst. Here's the exact system prompt architecture I use to generate structured trade ideas from raw chart data.</p>
+            <div class="post-footer">
+              <span class="post-read">5 min read</span>
+              <a href="blog/prompt-engineering-for-traders.html" class="post-read-link">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 3 — Trading -->
+        <article class="post-card" data-category="trading">
+          <div class="post-visual trading-visual-sm">
+            <div class="pair-display">
+              <div class="pair-name">XAU/USD</div>
+              <div class="pair-price accent">2,341.80</div>
+              <div class="pair-change up">▲ 1.24%</div>
+              <div class="pair-label">DAILY BIAS: BULLISH</div>
+            </div>
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-tag trading-tag">Trading</span>
+              <span class="post-date">March 8, 2026</span>
+            </div>
+            <h3 class="post-title">Gold in Q2 2026 — Why I'm Still Long and Where I'm Looking to Add</h3>
+            <p class="post-excerpt">XAU/USD has been one of the cleanest trending assets of the year. Here's my current read on the weekly structure, where the key levels are, and how I'm sizing my positions.</p>
+            <div class="post-footer">
+              <span class="post-read">4 min read</span>
+              <a href="blog/gold-q2-2026-analysis.html" class="post-read-link">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 4 — AI -->
+        <article class="post-card" data-category="ai">
+          <div class="post-visual ai-visual-2">
+            <div class="ai-nodes">
+              <div class="ai-node">Input</div>
+              <div class="ai-arrow">→</div>
+              <div class="ai-node accent-node">LLM</div>
+              <div class="ai-arrow">→</div>
+              <div class="ai-node">Output</div>
+            </div>
+            <div class="ai-label">RAG PIPELINE</div>
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-tag ai-tag">AI & Prompts</span>
+              <span class="post-date">February 22, 2026</span>
+            </div>
+            <h3 class="post-title">How I Built a RAG System That Answers Questions About My Own Trade History</h3>
+            <p class="post-excerpt">I fed three years of trade notes into a vector database and built a retrieval system on top. Now I can ask it what my edge is in London session and get a data-backed answer.</p>
+            <div class="post-footer">
+              <span class="post-read">7 min read</span>
+              <a href="blog/rag-system-trade-history.html" class="post-read-link">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 5 — Dev -->
+        <article class="post-card" data-category="dev">
+          <div class="post-visual dev-visual-2">
+            <div class="terminal-mini">
+              <div class="tm-bar"><span class="tb-dot red"></span><span class="tb-dot yellow"></span><span class="tb-dot green"></span></div>
+              <div class="tm-body">
+                <div class="tm-line"><span class="t-prompt-m">$</span> git push origin main</div>
+                <div class="tm-line out">✓ Deploy triggered</div>
+                <div class="tm-line out accent-text">Live in 23s</div>
+              </div>
+            </div>
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-tag dev-tag">Development</span>
+              <span class="post-date">February 10, 2026</span>
+            </div>
+            <h3 class="post-title">My Exact Netlify + GitHub Setup for Zero-Config Deployments</h3>
+            <p class="post-excerpt">Every push to main deploys in under 30 seconds with security headers, caching rules, and branch previews. Here's the exact `netlify.toml` config I use on every project.</p>
+            <div class="post-footer">
+              <span class="post-read">3 min read</span>
+              <a href="blog/netlify-github-setup.html" class="post-read-link">Read →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- POST 6 — Trading -->
+        <article class="post-card" data-category="trading">
+          <div class="post-visual trading-visual-sm">
+            <div class="pair-display">
+              <div class="pair-name">EUR/USD</div>
+              <div class="pair-price accent">1.0847</div>
+              <div class="pair-change down">▼ 0.31%</div>
+              <div class="pair-label">SESSION: LONDON</div>
+            </div>
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-tag trading-tag">Trading</span>
+              <span class="post-date">January 29, 2026</span>
+            </div>
+            <h3 class="post-title">The London Session Edge — Why I Do 80% of My FX Trading in a 3-Hour Window</h3>
+            <p class="post-excerpt">Session overlap is where liquidity concentrates and smart money moves. I've tracked my own win rate by session for 18 months. The data is decisive — and it's changed everything about how I trade FX.</p>
+            <div class="post-footer">
+              <span class="post-read">5 min read</span>
+              <a href="blog/london-session-edge.html" class="post-read-link">Read →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Empty state (hidden by default, shown when filter has no results) -->
+      <div class="blog-empty hidden" id="blogEmpty">
+        <p>No posts in this category yet. Check back soon.</p>
+      </div>
+
+      <!-- Coming soon nudge -->
+      <div class="blog-more">
+        <p class="blog-more-text">More posts dropping regularly. Follow <a href="https://twitter.com/0xcaptaintrade" target="_blank" class="accent">@0xcaptaintrade</a> for updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+        <p class="footer-copy">© 2026 CaptainTrade. Built with precision.</p>
+        <div class="footer-links">
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/blog.js" defer></script>
+</body>
+</html>

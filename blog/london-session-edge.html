@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The London Session Edge — Why I Do 80% of My FX Trading in a 3-Hour Window — CaptainTrade</title>
+  <meta name="description" content="Session overlap is where liquidity concentrates and smart money moves. I've tracked my own win rate by session for 18 months. The data is decisive." />
+  <meta name="author" content="CaptainTrade" />
+  <meta property="og:title" content="The London Session Edge — Why I Do 80% of My FX Trading in a 3-Hour Window" />
+  <meta property="og:description" content="Session overlap is where liquidity concentrates and smart money moves. I've tracked my own win rate by session for 18 months. The data is decisive." />
+  <meta property="og:image" content="../assets/images/pfp.jpg" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@0xcaptaintrade" />
+  <link rel="canonical" href="https://captaintrade.netlify.app/blog/london-session-edge" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/post.css" />
+</head>
+<body class="post-page">
+
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrapper">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="tick" id="t-BTC">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU">XAU/USD &nbsp;— —</span>
+      <span class="tick" id="t-BTC2">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH2">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL2">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB2">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK2">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR2">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP2">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY2">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD2">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU2">XAU/USD &nbsp;— —</span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" style="color:var(--accent)">Insights</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about" class="mob-link">About</a></li>
+      <li><a href="../index.html#services" class="mob-link">Services</a></li>
+      <li><a href="../blog.html" class="mob-link">Insights</a></li>
+      <li><a href="../index.html#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- POST HERO -->
+  <section class="post-hero">
+    <div class="container">
+      <div class="post-hero-inner">
+        <div class="post-hero-meta">
+          <a href="../blog.html" class="post-back">← Back to Insights</a>
+          <span class="post-back-sep">·</span>
+          <span class="post-tag trading-tag">Trading</span>
+          <span class="post-date">January 29, 2026</span>
+          <span class="post-read">5 min read</span>
+        </div>
+        <h1 class="post-hero-title">The London Session Edge — Why I Do 80% of My FX Trading in a 3-Hour Window</h1>
+        <p class="post-hero-excerpt">Session overlap is where liquidity concentrates and smart money moves. I've tracked my own win rate by session for 18 months. The data is decisive.</p>
+        <div class="post-hero-byline">
+          <div class="byline-author">
+            <img src="../assets/images/pfp.jpg" alt="CaptainTrade" class="byline-avatar" />
+            <div>
+              <div class="byline-name">CaptainTrade</div>
+              <span class="byline-role">Developer · AI Engineer · Trader</span>
+            </div>
+          </div>
+          <div class="byline-divider"></div>
+          <div class="byline-stat">
+            <span class="byline-stat-val">January 29, 2026</span>
+            <span class="byline-stat-key">Published</span>
+          </div>
+          <div class="byline-divider"></div>
+          <div class="byline-stat">
+            <span class="byline-stat-val">5 min read</span>
+            <span class="byline-stat-key">Read time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST LAYOUT -->
+  <div class="container">
+    <div class="post-layout">
+
+      <!-- BODY -->
+      <article class="post-body">
+        <h2 id="why-sessions-matter">Why sessions matter</h2>
+        <p>The forex market never closes, but it isn't equally liquid across all 24 hours. Liquidity — the volume of buy and sell orders in the market — determines how cleanly price moves, how tight spreads are, and how reliably technical levels hold. Low-liquidity periods produce choppy, unpredictable price action. High-liquidity periods produce directional, structured moves.</p>
+        <p>The three major sessions — Tokyo, London, and New York — each have distinct characteristics. London is the most important for FX traders. It accounts for roughly 34% of global forex volume, more than any other single session, and the London-New York overlap (13:00–17:00 WAT) is the highest-volume window of the entire trading day.</p>
+
+        <div class="callout">
+          <span class="callout-label">My data</span>
+          <p>Over 18 months and 847 trades: London session win rate 61.3%, New York session 47.2%, Asian session 38.9%. The difference is not marginal — it's the difference between a profitable and unprofitable trader.</p>
+        </div>
+
+        <h2 id="london-open">What happens at London open</h2>
+        <p>At 09:00 London time (10:00 WAT), the largest concentration of institutional traders in the world begins their trading day simultaneously. Banks, hedge funds, and proprietary trading firms start executing orders that have been accumulating overnight. This creates predictable patterns:</p>
+        <ul>
+          <li><strong>Liquidity sweeps</strong> — price often moves sharply to take out overnight highs or lows (stop hunts) before reversing in the actual direction of the day's move</li>
+          <li><strong>Range expansion</strong> — the Asian session often creates a tight range; London frequently breaks one side of that range in the first 30–60 minutes</li>
+          <li><strong>Trend continuation or reversal</strong> — the direction established in the first London hour often persists for the entire session</li>
+        </ul>
+
+        <h2 id="the-data">My personal data</h2>
+        <p>I started tracking session performance obsessively after my second blown account. The pattern that emerged was so clear it was almost embarrassing — I had been ignoring it entirely. Every session of poor performance was concentrated outside the London window. Every strong run was built on London trades.</p>
+        <table class="kv-table">
+          <thead><tr><th>Session</th><th>Win Rate</th><th>Avg RR</th><th>% of trades</th></tr></thead>
+          <tbody>
+            <tr><td>London open (09:00–12:00 GMT)</td><td>61.3%</td><td>1.8</td><td>54%</td></tr>
+            <tr><td>London/NY overlap (13:00–17:00 GMT)</td><td>58.1%</td><td>1.6</td><td>26%</td></tr>
+            <tr><td>New York solo (17:00–21:00 GMT)</td><td>47.2%</td><td>1.3</td><td>14%</td></tr>
+            <tr><td>Asian session (21:00–08:00 GMT)</td><td>38.9%</td><td>1.1</td><td>6%</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="the-window">The exact window I trade</h2>
+        <p>I trade from 10:00 to 13:00 WAT (09:00–12:00 GMT) as my primary window. This covers the London open, the first hour of institutional activity, and the mid-morning continuation. I do not take new entries after 13:00 WAT unless I'm already in a trade that's running.</p>
+        <p>Three hours. That's my trading day. Everything else is preparation (the hour before London open) and review (after close).</p>
+
+        <h2 id="what-to-watch">What I watch during this window</h2>
+        <ul>
+          <li>The Asian session high and low — London frequently sweeps one of these before moving in direction</li>
+          <li>Higher timeframe (H4/Daily) key levels that price is approaching</li>
+          <li>Any economic news scheduled for the London session — I avoid entries 15 minutes before major releases</li>
+          <li>GBP pairs and EUR pairs first — these are the most liquid and cleanest movers in London hours</li>
+        </ul>
+
+        <h2 id="outside-london">What I do outside London hours</h2>
+        <p>I do not trade. I mark up charts, review existing positions, journal completed trades, and study. The temptation to trade during slow sessions — especially during the evening when you have free time — is one of the most costly habits a retail trader can develop.</p>
+        <p>Boredom trading in low-liquidity sessions is where most of my historical losses came from. Eliminating it was the single most impactful change I've made to my trading.</p>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">In this article</div>
+          <ul class="toc-list">
+            <li><a href="#why-sessions-matter">Why sessions matter</a></li>
+            <li><a href="#london-open">What happens at London open</a></li>
+            <li><a href="#the-data">My personal data</a></li>
+            <li><a href="#the-window">The exact window I trade</a></li>
+            <li><a href="#what-to-watch">What I watch during this window</a></li>
+            <li><a href="#outside-london">What I do outside London hours</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">About the author</div>
+          <img src="../assets/images/pfp.jpg" alt="CaptainTrade" class="author-card-img" />
+          <div class="author-card-name">CaptainTrade</div>
+          <p class="author-card-bio">Developer, AI Prompt Engineer, and professional Crypto & FX Trader based in Abuja, Nigeria.</p>
+          <div class="author-socials">
+            <a href="https://twitter.com/0xcaptaintrade" target="_blank" class="author-social-link">𝕏 Twitter</a>
+            <a href="https://t.me/Captain_Trade1" target="_blank" class="author-social-link">Telegram</a>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">Related posts</div>
+            <a href="why-retail-traders-lose.html" class="related-post">
+              <span class="related-tag trading-tag">Trading</span>
+              <span class="related-title">Why Most Retail Traders Lose</span>
+            </a>
+            <a href="gold-q2-2026-analysis.html" class="related-post">
+              <span class="related-tag trading-tag">Trading</span>
+              <span class="related-title">Gold in Q2 2026 Analysis</span>
+            </a>
+            <a href="prompt-engineering-for-traders.html" class="related-post">
+              <span class="related-tag ai-tag">AI & Prompts</span>
+              <span class="related-title">Prompt Engineering for Traders</span>
+            </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- POST FOOTER -->
+  <section class="post-footer-section">
+    <div class="container">
+      <div class="post-footer-inner">
+        <div class="post-share">
+          <span class="share-label">Share</span>
+          <button class="share-btn" id="shareX">𝕏 Twitter</button>
+          <button class="share-btn" id="shareCopy">Copy Link</button>
+        </div>
+        <div class="post-nav">
+          <a href="../blog.html" class="post-nav-link">← All Posts</a>
+          <a href="../index.html#contact" class="post-nav-link">Work With Me →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="../index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+        <p class="footer-copy">© 2026 CaptainTrade. Built with precision.</p>
+        <div class="footer-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#services">Services</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/post.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I Built a RAG System That Answers Questions About My Own Trade History — CaptainTrade</title>
+  <meta name="description" content="I fed three years of trade notes into a vector database and built a retrieval system on top. Now I can ask it what my edge is in London session and get a data-backed answer." />
+  <meta name="author" content="CaptainTrade" />
+  <meta property="og:title" content="How I Built a RAG System That Answers Questions About My Own Trade History" />
+  <meta property="og:description" content="I fed three years of trade notes into a vector database and built a retrieval system on top. Now I can ask it what my edge is in London session and get a data-backed answer." />
+  <meta property="og:image" content="../assets/images/pfp.jpg" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@0xcaptaintrade" />
+  <link rel="canonical" href="https://captaintrade.netlify.app/blog/rag-system-trade-history" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/post.css" />
+</head>
+<body class="post-page">
+
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrapper">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="tick" id="t-BTC">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU">XAU/USD &nbsp;— —</span>
+      <span class="tick" id="t-BTC2">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH2">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL2">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB2">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK2">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR2">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP2">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY2">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD2">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU2">XAU/USD &nbsp;— —</span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../blog.html" style="color:var(--accent)">Insights</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html#about" class="mob-link">About</a></li>
+      <li><a href="../index.html#services" class="mob-link">Services</a></li>
+      <li><a href="../blog.html" class="mob-link">Insights</a></li>
+      <li><a href="../index.html#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- POST HERO -->
+  <section class="post-hero">
+    <div class="container">
+      <div class="post-hero-inner">
+        <div class="post-hero-meta">
+          <a href="../blog.html" class="post-back">← Back to Insights</a>
+          <span class="post-back-sep">·</span>
+          <span class="post-tag ai-tag">AI & Prompts</span>
+          <span class="post-date">February 22, 2026</span>
+          <span class="post-read">7 min read</span>
+        </div>
+        <h1 class="post-hero-title">How I Built a RAG System That Answers Questions About My Own Trade History</h1>
+        <p class="post-hero-excerpt">I fed three years of trade notes into a vector database and built a retrieval system on top. Now I can ask it what my edge is in London session and get a data-backed answer.</p>
+        <div class="post-hero-byline">
+          <div class="byline-author">
+            <img src="../assets/images/pfp.jpg" alt="CaptainTrade" class="byline-avatar" />
+            <div>
+              <div class="byline-name">CaptainTrade</div>
+              <span class="byline-role">Developer · AI Engineer · Trader</span>
+            </div>
+          </div>
+          <div class="byline-divider"></div>
+          <div class="byline-stat">
+            <span class="byline-stat-val">February 22, 2026</span>
+            <span class="byline-stat-key">Published</span>
+          </div>
+          <div class="byline-divider"></div>
+          <div class="byline-stat">
+            <span class="byline-stat-val">7 min read</span>
+            <span class="byline-stat-key">Read time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST LAYOUT -->
+  <div class="container">
+    <div class="post-layout">
+
+      <!-- BODY -->
+      <article class="post-body">
+        <h2 id="what-is-rag">What is RAG and why does it matter</h2>
+        <p>RAG — Retrieval-Augmented Generation — is a pattern for giving a language model access to a specific knowledge base rather than relying only on its training data. Instead of asking Claude "what's my edge in the London session?", you give it your actual trade history and let it answer from evidence.</p>
+        <p>The difference in answer quality is dramatic. A generic AI response about London session trading is useful. An AI response grounded in your personal 847-trade history, with specific win rates, average RR, and common mistakes identified from your own notes — that's a different tool entirely.</p>
+
+        <div class="callout">
+          <span class="callout-label">What this system does</span>
+          <p>Ask any question about your trading history in plain English. Get back a specific, evidence-based answer sourced from your actual trades, journals, and notes. No spreadsheets, no manual filtering.</p>
+        </div>
+
+        <h2 id="the-data">Preparing the trade data</h2>
+        <p>My trade data lived in three places: a Notion journal with written notes on each trade, a Google Sheet with entry/exit data and PnL, and screenshots I'd annotated over the years. I standardised everything into a simple text format — one document per trade, containing the pair, session, direction, outcome, and my written notes.</p>
+
+        <div class="code-block"><pre><span class="cm"># Example trade document format</span>
+Trade ID: 2024-03-14-EURUSD-001
+Pair: EUR/USD | Session: London | Direction: Short
+Entry: 1.0940 | Stop: 1.0975 | TP: 1.0870
+Outcome: Win | PnL: +2.1R
+Notes: <span class="str">"Clean break and retest of 1.0950 resistance on H1.
+HTF bias was bearish — weekly structure intact. Entered on
+the retest with a bearish engulfing confirmation. Managed
+well, closed at first target. No errors in execution."</span></pre></div>
+
+        <h2 id="embedding">Embedding and storing</h2>
+        <p>Each trade document gets converted into a vector embedding — a mathematical representation that captures the semantic meaning of the text. Similar trades (e.g., losing London session longs during ranging markets) cluster close together in vector space, which is what enables meaningful retrieval.</p>
+        <p>I used OpenAI's text-embedding-3-small model for the embeddings and stored them in a local Chroma vector database. The entire setup — embedding 847 trades — took about 4 minutes and cost under $0.50 in API credits.</p>
+
+        <h2 id="retrieval">The retrieval and generation step</h2>
+        <p>When I ask a question, the system converts it to a vector, finds the most semantically similar trade documents, and feeds those as context to Claude with the question. Claude then answers from the retrieved evidence rather than from general knowledge.</p>
+
+        <div class="code-block"><pre><span class="kw">def</span> <span class="fn">query_trades</span>(question: str, k: int = 15):
+    <span class="cm"># Convert question to embedding</span>
+    query_embedding = <span class="fn">embed</span>(question)
+
+    <span class="cm"># Retrieve most relevant trades</span>
+    results = collection.<span class="fn">query</span>(
+        query_embeddings=[query_embedding],
+        n_results=k
+    )
+
+    <span class="cm"># Build context from retrieved trades</span>
+    context = <span class="str">"
+
+"</span>.<span class="fn">join</span>(results[<span class="str">'documents'</span>][0])
+
+    <span class="cm"># Generate answer with Claude</span>
+    response = claude.<span class="fn">messages</span>.<span class="fn">create</span>(
+        model=<span class="str">"claude-opus-4-6"</span>,
+        messages=[{
+            <span class="str">"role"</span>: <span class="str">"user"</span>,
+            <span class="str">"content"</span>: f<span class="str">"Based on these trades:
+{context}
+
+Answer: {question}"</span>
+        }]
+    )
+    <span class="kw">return</span> response.content[0].text</pre></div>
+
+        <h2 id="what-i-learned">What I actually learned from it</h2>
+        <p>The insights that came back were genuinely useful — and some were uncomfortable. My London session win rate is 61%. My New York session win rate is 44%. I had suspected this but never quantified it. The system confirmed it with evidence from 300+ trades.</p>
+        <p>More importantly: my losing trades share a pattern that I couldn't see when reviewing them one by one. The system identified that 73% of my losing trades involved entries taken within 20 minutes of a major news event — something I knew to avoid in theory but was clearly ignoring in practice.</p>
+
+        <h2 id="build-it">How to build this yourself</h2>
+        <ul>
+          <li>Export your trades to a consistent text format — one document per trade with outcome and notes</li>
+          <li>Use the OpenAI embeddings API or a free local model like nomic-embed-text</li>
+          <li>Store in Chroma (local) or Pinecone (cloud) — both have free tiers</li>
+          <li>Build a simple Python script that takes a question, retrieves relevant trades, and calls Claude</li>
+          <li>Total build time: 4–6 hours. Total cost to run: near zero</li>
+        </ul>
+        <p>If you want help building this for your own trade history, that's something I can help with directly. Reach out via the contact form.</p>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="post-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">In this article</div>
+          <ul class="toc-list">
+            <li><a href="#what-is-rag">What is RAG and why does it matter</a></li>
+            <li><a href="#the-data">Preparing the trade data</a></li>
+            <li><a href="#embedding">Embedding and storing</a></li>
+            <li><a href="#retrieval">The retrieval and generation step</a></li>
+            <li><a href="#what-i-learned">What I actually learned from it</a></li>
+            <li><a href="#build-it">How to build this yourself</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">About the author</div>
+          <img src="../assets/images/pfp.jpg" alt="CaptainTrade" class="author-card-img" />
+          <div class="author-card-name">CaptainTrade</div>
+          <p class="author-card-bio">Developer, AI Prompt Engineer, and professional Crypto & FX Trader based in Abuja, Nigeria.</p>
+          <div class="author-socials">
+            <a href="https://twitter.com/0xcaptaintrade" target="_blank" class="author-social-link">𝕏 Twitter</a>
+            <a href="https://t.me/Captain_Trade1" target="_blank" class="author-social-link">Telegram</a>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">Related posts</div>
+            <a href="prompt-engineering-for-traders.html" class="related-post">
+              <span class="related-tag ai-tag">AI & Prompts</span>
+              <span class="related-title">Prompt Engineering for Traders</span>
+            </a>
+            <a href="crypto-dashboard-vanilla-js.html" class="related-post">
+              <span class="related-tag dev-tag">Development</span>
+              <span class="related-title">Real-Time Crypto Dashboard</span>
+            </a>
+            <a href="why-retail-traders-lose.html" class="related-post">
+              <span class="related-tag trading-tag">Trading</span>
+              <span class="related-title">Why Most Retail Traders Lose</span>
+            </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- POST FOOTER -->
+  <section class="post-footer-section">
+    <div class="container">
+      <div class="post-footer-inner">
+        <div class="post-share">
+          <span class="share-label">Share</span>
+          <button class="share-btn" id="shareX">𝕏 Twitter</button>
+          <button class="share-btn" id="shareCopy">Copy Link</button>
+        </div>
+        <div class="post-nav">
+          <a href="../blog.html" class="post-nav-link">← All Posts</a>
+          <a href="../index.html#contact" class="post-nav-link">Work With Me →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="../index.html" class="nav-logo">CAPTAIN<span>TRADE</span></a>
+        <p class="footer-copy">© 2026 CaptainTrade. Built with precision.</p>
+        <div class="footer-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#services">Services</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/post.js" defer></script>
+</body>
+</html>
