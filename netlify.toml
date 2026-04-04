@@ -3,6 +3,13 @@
 [build]
   publish = "."
 
+# Disable Netlify's automatic email obfuscation (we handle it ourselves)
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
 # Security & performance headers
 [[headers]]
   for = "/*"

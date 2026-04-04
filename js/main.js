@@ -249,3 +249,12 @@ if (glow && window.innerWidth > 768) {
 
 console.log('%c CaptainTrade 🚀 ', 'background:#00E5CC;color:#090C10;font-size:14px;font-weight:bold;padding:6px 12px;border-radius:4px;');
 console.log('%c Developer · AI Engineer · Crypto & FX Trader', 'color:#888899;font-size:11px;');
+
+/* ---------- EMAIL LINK ASSEMBLY ---------- */
+/* Split to prevent bot scraping */
+const emailLink = document.getElementById('emailLink');
+if (emailLink) {
+  const u = 'captaintrade01';
+  const d = 'gmail.com';
+  emailLink.href = 'mailto:' + u + '@' + d;
+}
