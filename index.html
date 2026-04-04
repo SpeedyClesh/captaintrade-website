@@ -68,28 +68,28 @@
 
   <!-- ========== TICKER TAPE ========== -->
   <div class="ticker-wrapper">
-    <div class="ticker-track">
-      <span class="tick up">BTC/USD &nbsp;▲ 2.41%</span>
-      <span class="tick down">ETH/USD &nbsp;▼ 0.87%</span>
-      <span class="tick up">EUR/USD &nbsp;▲ 0.13%</span>
-      <span class="tick up">GBP/USD &nbsp;▲ 0.29%</span>
-      <span class="tick down">SOL/USD &nbsp;▼ 1.02%</span>
-      <span class="tick up">XAU/USD &nbsp;▲ 0.55%</span>
-      <span class="tick down">USD/JPY &nbsp;▼ 0.18%</span>
-      <span class="tick up">BNB/USD &nbsp;▲ 1.77%</span>
-      <span class="tick up">AUD/USD &nbsp;▲ 0.08%</span>
-      <span class="tick down">LINK/USD &nbsp;▼ 0.64%</span>
-      <!-- duplicate for seamless loop -->
-      <span class="tick up">BTC/USD &nbsp;▲ 2.41%</span>
-      <span class="tick down">ETH/USD &nbsp;▼ 0.87%</span>
-      <span class="tick up">EUR/USD &nbsp;▲ 0.13%</span>
-      <span class="tick up">GBP/USD &nbsp;▲ 0.29%</span>
-      <span class="tick down">SOL/USD &nbsp;▼ 1.02%</span>
-      <span class="tick up">XAU/USD &nbsp;▲ 0.55%</span>
-      <span class="tick down">USD/JPY &nbsp;▼ 0.18%</span>
-      <span class="tick up">BNB/USD &nbsp;▲ 1.77%</span>
-      <span class="tick up">AUD/USD &nbsp;▲ 0.08%</span>
-      <span class="tick down">LINK/USD &nbsp;▼ 0.64%</span>
+    <div class="ticker-track" id="tickerTrack">
+      <span class="tick" id="t-BTC">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU">XAU/USD &nbsp;— —</span>
+      <!-- duplicate set for seamless loop — updated by JS -->
+      <span class="tick" id="t-BTC2">BTC/USD &nbsp;— —</span>
+      <span class="tick" id="t-ETH2">ETH/USD &nbsp;— —</span>
+      <span class="tick" id="t-SOL2">SOL/USD &nbsp;— —</span>
+      <span class="tick" id="t-BNB2">BNB/USD &nbsp;— —</span>
+      <span class="tick" id="t-LINK2">LINK/USD &nbsp;— —</span>
+      <span class="tick" id="t-EUR2">EUR/USD &nbsp;— —</span>
+      <span class="tick" id="t-GBP2">GBP/USD &nbsp;— —</span>
+      <span class="tick" id="t-JPY2">USD/JPY &nbsp;— —</span>
+      <span class="tick" id="t-AUD2">AUD/USD &nbsp;— —</span>
+      <span class="tick" id="t-XAU2">XAU/USD &nbsp;— —</span>
     </div>
   </div>
 
@@ -509,7 +509,7 @@
               <div class="social-icon">@</div>
               <div>
                 <strong>Email</strong>
-                <span id="emailDisplay">captaintrade01@gmail.com</span>
+                <span id="emailDisplay"><span class="__cf_email__" data-cfemail="7714160703161e190305161312474637101a161e1b5914181a">[email&#160;protected]</span></span>
               </div>
             </a>
             <a href="https://github.com/SpeedyClesh" target="_blank" class="contact-social">
@@ -573,7 +573,7 @@
           <a href="#about">About</a>
           <a href="#services">Services</a>
                 <a href="#contact">Contact</a>
-        </div>
+        </div
       </div>
     </div>
   </footer>

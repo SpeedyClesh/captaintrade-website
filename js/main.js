@@ -199,43 +199,103 @@ window.addEventListener('scroll', () => {
   });
 });
 
-/* ---------- TICKER LIVE UPDATE (Demo) ---------- */
-/* Randomize ticker values slightly every 10 seconds for a "live" feel */
-function updateTicker() {
-  const ticks = document.querySelectorAll('.tick');
-  const pairs = [
-    { label: 'BTC/USD', base: 67000, vol: 2000 },
-    { label: 'ETH/USD', base: 3200, vol: 200 },
-    { label: 'EUR/USD', base: 1.085, vol: 0.005, small: true },
-    { label: 'GBP/USD', base: 1.265, vol: 0.005, small: true },
-    { label: 'SOL/USD', base: 160, vol: 10 },
-    { label: 'XAU/USD', base: 2350, vol: 30 },
-    { label: 'USD/JPY', base: 151, vol: 1, small: true },
-    { label: 'BNB/USD', base: 580, vol: 20 },
-    { label: 'AUD/USD', base: 0.648, vol: 0.005, small: true },
-    { label: 'LINK/USD', base: 14.5, vol: 1 },
-  ];
+/* ============================================================
+   LIVE TICKER — Real market data
+   Crypto  → CoinGecko public API  (no key, rate-limited)
+   FX+Gold → exchangerate.host      (no key, free tier)
+   Refresh → every 60 seconds
+   Fallback→ last known values shown if fetch fails
+   ============================================================ */
 
-  const halfLen = Math.floor(ticks.length / 2);
-  for (let i = 0; i < halfLen && i < pairs.length; i++) {
-    const p = pairs[i];
-    const change = ((Math.random() - 0.5) * 2 * p.vol / p.base * 100).toFixed(2);
-    const isUp = parseFloat(change) >= 0;
-    const sign = isUp ? '▲' : '▼';
-    const absChange = Math.abs(change);
+const TICKER_PAIRS = [
+  { id: 'BTC',  label: 'BTC/USD',  type: 'crypto', cgId: 'bitcoin' },
+  { id: 'ETH',  label: 'ETH/USD',  type: 'crypto', cgId: 'ethereum' },
+  { id: 'SOL',  label: 'SOL/USD',  type: 'crypto', cgId: 'solana' },
+  { id: 'BNB',  label: 'BNB/USD',  type: 'crypto', cgId: 'binancecoin' },
+  { id: 'LINK', label: 'LINK/USD', type: 'crypto', cgId: 'chainlink' },
+  { id: 'EUR',  label: 'EUR/USD',  type: 'fx',     fxSym: 'EUR' },
+  { id: 'GBP',  label: 'GBP/USD',  type: 'fx',     fxSym: 'GBP' },
+  { id: 'JPY',  label: 'USD/JPY',  type: 'fx',     fxSym: 'JPY', invert: true },
+  { id: 'AUD',  label: 'AUD/USD',  type: 'fx',     fxSym: 'AUD' },
+  { id: 'XAU',  label: 'XAU/USD',  type: 'fx',     fxSym: 'XAU' },
+];
 
-    ticks[i].textContent = `${p.label} \u00A0${sign} ${absChange}%`;
-    ticks[i].className = `tick ${isUp ? 'up' : 'down'}`;
+/* Last known prices — used as fallback if API fails */
+const lastKnown = {};
 
-    /* Mirror the duplicate */
-    if (ticks[i + halfLen]) {
-      ticks[i + halfLen].textContent = ticks[i].textContent;
-      ticks[i + halfLen].className = ticks[i].className;
-    }
-  }
+function renderTick(pair, price, change24h) {
+  const isUp  = change24h >= 0;
+  const sign  = isUp ? '▲' : '▼';
+  const pct   = Math.abs(change24h).toFixed(2);
+
+  /* Format price sensibly */
+  let priceStr;
+  if (price >= 1000)       priceStr = price.toLocaleString('en-US', { maximumFractionDigits: 2 });
+  else if (price >= 1)     priceStr = price.toFixed(4);
+  else                     priceStr = price.toFixed(5);
+
+  const text  = `${pair.label} \u00A0${priceStr} \u00A0${sign} ${pct}%`;
+  const cls   = `tick ${isUp ? 'up' : 'down'}`;
+
+  const el  = document.getElementById(`t-${pair.id}`);
+  const el2 = document.getElementById(`t-${pair.id}2`);
+  if (el)  { el.textContent  = text; el.className  = cls; }
+  if (el2) { el2.textContent = text; el2.className = cls; }
+
+  lastKnown[pair.id] = { price, change24h };
 }
 
-setInterval(updateTicker, 10000);
+async function fetchCrypto() {
+  const cryptoPairs = TICKER_PAIRS.filter(p => p.type === 'crypto');
+  const ids = cryptoPairs.map(p => p.cgId).join(',');
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`;
+
+  const res  = await fetch(url);
+  if (!res.ok) throw new Error(`CoinGecko ${res.status}`);
+  const data = await res.json();
+
+  cryptoPairs.forEach(pair => {
+    const d = data[pair.cgId];
+    if (d) renderTick(pair, d.usd, d.usd_24h_change ?? 0);
+  });
+}
+
+async function fetchFX() {
+  /* exchangerate.host — free, no key, includes XAU (Gold) */
+  const fxPairs  = TICKER_PAIRS.filter(p => p.type === 'fx');
+  const symbols  = fxPairs.map(p => p.fxSym).join(',');
+  const url      = `https://api.exchangerate.host/live?access_key=free&source=USD&currencies=${symbols}`;
+
+  const res  = await fetch(url);
+  if (!res.ok) throw new Error(`ExchangeRate ${res.status}`);
+  const data = await res.json();
+  const quotes = data.quotes || {};
+
+  fxPairs.forEach(pair => {
+    const key   = `USD${pair.fxSym}`;
+    const raw   = quotes[key];
+    if (!raw) return;
+
+    let price = pair.invert ? raw : (1 / raw);
+
+    /* For XAU: API gives oz per USD → invert to get USD per oz */
+    if (pair.fxSym === 'XAU') price = 1 / raw;
+
+    /* We don't get 24h change from this endpoint — use stored delta or 0 */
+    const prev   = lastKnown[pair.id];
+    const change = prev ? ((price - prev.price) / prev.price) * 100 : 0;
+    renderTick(pair, price, change);
+  });
+}
+
+async function refreshTicker() {
+  try { await fetchCrypto(); } catch (e) { console.warn('Ticker crypto fetch failed:', e.message); }
+  try { await fetchFX();     } catch (e) { console.warn('Ticker FX fetch failed:', e.message); }
+}
+
+/* Initial fetch on load, then every 60s */
+refreshTicker();
+setInterval(refreshTicker, 60000);
 
 /* ---------- CURSOR GLOW (Optional Premium Touch) ---------- */
 const glow = document.querySelector('.hero-glow');

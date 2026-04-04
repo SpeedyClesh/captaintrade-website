@@ -89,10 +89,41 @@ body {
   color: var(--text-muted);
   border-right: 1px solid var(--border);
   line-height: 34px;
+  transition: color 0.4s ease;
 }
 
-.tick.up { color: var(--accent); }
-.tick.down { color: var(--red); }
+/* Neutral loading state — dims until real data arrives */
+.tick:not(.up):not(.down) {
+  opacity: 0.4;
+  animation: tickPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes tickPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.7; }
+}
+
+.tick.up   { color: var(--accent); opacity: 1; animation: none; }
+.tick.down { color: var(--red);    opacity: 1; animation: none; }
+
+/* Live indicator dot in ticker bar */
+.ticker-wrapper::before {
+  content: '● LIVE';
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  padding: 0 14px;
+  border-right: 1px solid var(--border);
+  line-height: 34px;
+  flex-shrink: 0;
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
 
 @keyframes ticker {
   0% { transform: translateX(0); }
