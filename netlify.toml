@@ -2,6 +2,7 @@
 
 [build]
   publish = "."
+  functions = "netlify/functions"
 
 # Disable Netlify's automatic email obfuscation (we handle it ourselves)
 [build.processing]
