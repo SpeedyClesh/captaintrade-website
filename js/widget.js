@@ -54,7 +54,10 @@
 
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.error || 'Request failed');
+      if (!res.ok) {
+        const debugInfo = data.debug ? `\n\nDebug: ${data.debug}` : '';
+        throw new Error((data.error || 'Request failed') + debugInfo);
+      }
 
       const reply = data.response;
       messageHistory.push({ role: 'assistant', content: reply });

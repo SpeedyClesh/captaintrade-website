@@ -87,17 +87,23 @@ How to respond:
       }),
     });
 
+    const responseText = await response.text();
+
     if (!response.ok) {
-      const err = await response.text();
-      console.error('Claude API error:', err);
+      console.error('Claude API error status:', response.status);
+      console.error('Claude API error body:', responseText);
+      /* Return the actual error in development so we can debug */
       return {
         statusCode: 502,
         headers,
-        body: JSON.stringify({ error: 'AI service temporarily unavailable. Please try again shortly.' }),
+        body: JSON.stringify({
+          error: 'AI service temporarily unavailable. Please try again shortly.',
+          debug: response.status + ': ' + responseText.slice(0, 200),
+        }),
       };
     }
 
-    const data = await response.json();
+    const data = JSON.parse(responseText);
     claudeResponse = data.content?.[0]?.text || 'Sorry, I could not generate a response.';
 
   } catch (err) {
@@ -111,7 +117,7 @@ How to respond:
 
   /* ── Email notification via Formspree ── */
   try {
-    await fetch('https://formspree.io/f/xzdkjkwz', {
+    await fetch('https://formspree.io/f/YOUR_FORM_ID', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
