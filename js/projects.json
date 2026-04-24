@@ -1,0 +1,56 @@
+{
+  "projects": [
+    {
+      "id": "solanasnipe",
+      "title": "SolanaSnipe Bot",
+      "type": "Crypto + AI",
+      "typeClass": "accent-type",
+      "year": "2025",
+      "featured": true,
+      "description": "Real-time Solana whale tracking dashboard. Monitors big transactions, whale wallet activity, new token listings, and large trades — with AI-generated summaries powered by Claude.",
+      "tags": ["Solana", "Birdeye API", "Claude AI", "JavaScript"],
+      "liveUrl": "https://birdeye-solana-snipe.vercel.app/",
+      "githubUrl": "https://github.com/SpeedyClesh/birdeye-solana-snipe",
+      "screenshot": "https://api.microlink.io/?url=https://birdeye-solana-snipe.vercel.app/&screenshot=true&meta=false&embed=screenshot.url"
+    },
+    {
+      "id": "mayfair",
+      "title": "Mayfair Hotels Wuse 2",
+      "type": "Web Development",
+      "typeClass": "",
+      "year": "2025",
+      "featured": false,
+      "description": "Proposed website for a boutique hotel in Abuja, Nigeria. Full booking UI, room showcase, amenities, gallery, and guest reviews — designed to convert visitors into reservations.",
+      "tags": ["HTML/CSS", "JavaScript", "Vercel"],
+      "liveUrl": "https://mayfair-hotel-website.vercel.app/",
+      "githubUrl": "https://github.com/SpeedyClesh/mayfair-hotel-website",
+      "screenshot": "https://api.microlink.io/?url=https://mayfair-hotel-website.vercel.app/&screenshot=true&meta=false&embed=screenshot.url"
+    },
+    {
+      "id": "silverwrit",
+      "title": "Silverwrit Attorneys",
+      "type": "Web Development",
+      "typeClass": "",
+      "year": "2025",
+      "featured": false,
+      "description": "Full website for a foremost corporate & commercial law firm operating across Abuja and Lagos. Features practice areas, team profiles, and consultation booking.",
+      "tags": ["HTML/CSS", "JavaScript", "Netlify"],
+      "liveUrl": "https://silverwrit-attorneyss.netlify.app/",
+      "githubUrl": "https://github.com/SpeedyClesh/silverwrit-pitch",
+      "screenshot": "https://api.microlink.io/?url=https://silverwrit-attorneyss.netlify.app/&screenshot=true&meta=false&embed=screenshot.url"
+    },
+    {
+      "id": "csw",
+      "title": "CSW Nigeria",
+      "type": "Web Development",
+      "typeClass": "",
+      "year": "2025",
+      "featured": false,
+      "description": "Full NGO website for Christian Solidarity Worldwide Nigeria — a human rights advocacy organisation focused on religious freedom. Built to support their mission and outreach.",
+      "tags": ["HTML/CSS", "JavaScript", "Vercel"],
+      "liveUrl": "https://cswng-website.vercel.app/",
+      "githubUrl": "https://github.com/SpeedyClesh/cswng-website",
+      "screenshot": "https://api.microlink.io/?url=https://cswng-website.vercel.app/&screenshot=true&meta=false&embed=screenshot.url"
+    }
+  ]
+}
