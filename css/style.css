@@ -880,6 +880,11 @@ body {
   margin-bottom: 3rem;
 }
 
+/* 4-project 2x2 layout */
+.projects-grid-4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .project-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -1447,7 +1452,8 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .projects-grid {
+  .projects-grid,
+  .projects-grid-4 {
     grid-template-columns: 1fr;
   }
 
